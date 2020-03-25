@@ -12,6 +12,7 @@ function App() {
 
   const [team, setTeam] = useState(initialTeam)
   const [teamInfo, setTeamInfo] = useState({fname:"", email:"", role:""})
+  const [editedMember, seteditedMember] = useState({})
 
   const onInputChange = e => {
     const inputChange = e.target.name
@@ -21,6 +22,11 @@ function App() {
       [inputChange]:newValue,
     })
   }
+
+ function memberToEdit(event){
+   seteditedMember(event.target)
+   return console.log(editedMember)
+ }
 
   const onFSubmit = e => {
     e.preventDefault()
@@ -32,6 +38,8 @@ function App() {
     }
     setTeam([...team, newTeamMember])
   }
+
+ 
   return (
     <div className="App">
      
@@ -39,11 +47,10 @@ function App() {
         onInputChange={onInputChange}
         teamInfo={teamInfo}
         onFSubmit={onFSubmit}
+        memberToEdit={memberToEdit}
          />
         <h3>List of Team Members</h3>
-        {
-          team.map(f => <div key={f.id}>Name: {f.fname}    Role:{f.role}    Email: {f.email}</div>)
-        }
+        {team.map(f => <div key={f.id}>Name: {f.fname}    Role:{f.role}    Email: {f.email}<button onClick={memberToEdit}>Edit</button></div>)} 
 
      
 

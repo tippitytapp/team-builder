@@ -30,7 +30,7 @@ return(
             />
         </label><br />
             <button>Submit</button>
-            <button>Edit</button> 
+
           
     </form>
 )
